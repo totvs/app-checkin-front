@@ -88,7 +88,8 @@ export class CheckinPage {
         this.outputMessage.hidden = true;
         this.outputData.parentElement.hidden = false;
         this.outputData.innerText = code.data;
-        this.signUpPost();
+        // this.signUpPost();
+        this.presentToast();
         this.router.navigateByUrl('/events');
         window.cancelAnimationFrame(this.req);
       } else {
@@ -107,7 +108,7 @@ export class CheckinPage {
 
   signUpPost() {
     this.signUpService.post().subscribe( res => {
-      this.presentToast();
+     console.log('foi')
     });
   }
 
@@ -123,3 +124,4 @@ export class CheckinPage {
   }
 
 }
+
