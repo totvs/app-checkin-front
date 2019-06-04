@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 
 import jsQR from 'jsqr';
 
+import { SignUpService } from '../../providers/signup.service';
+
 @Component({
   selector: 'page-checkin',
   templateUrl: 'checkin.html',
@@ -22,7 +24,11 @@ export class CheckinPage {
   public req;
   public video;
 
-  constructor( public router: Router, public toastController: ToastController) {}
+  constructor( 
+    public router: Router, 
+    public toastController: ToastController,
+    private signUpService: SignUpService
+  ) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
@@ -82,7 +88,7 @@ export class CheckinPage {
         this.outputMessage.hidden = true;
         this.outputData.parentElement.hidden = false;
         this.outputData.innerText = code.data;
-        this.presentToast();
+        this.signUpPost();
         this.router.navigateByUrl('/events');
         window.cancelAnimationFrame(this.req);
       } else {
@@ -97,6 +103,12 @@ export class CheckinPage {
       }
     }
     this.req = window.requestAnimationFrame(() => this.tick());
+  }
+
+  signUpPost() {
+    this.signUpService.post().subscribe( res => {
+      this.presentToast();
+    });
   }
 
   async presentToast() {
