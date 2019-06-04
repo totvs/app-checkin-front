@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
 import { ConferenceData } from '../../providers/conference-data';
+import { EventsDetailService } from './events-detail.service';
 
 @Component({
   selector: 'page-events-detail',
@@ -18,7 +19,8 @@ export class EventsDetailPage implements OnInit {
 
   constructor(
     private dataProvider: ConferenceData,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private eventsDetailService: EventsDetailService
   ) {}
 
   ngOnInit() {
@@ -33,6 +35,19 @@ export class EventsDetailPage implements OnInit {
 
   sessionClick(item: string) {
     console.log('Clicked', item);
+  }
+
+  eventsRating() {
+    const body = {
+      email: 'exemplo@totvs.com.br',
+      event: 'Palestra',
+      note: 5,
+      description: 'Sugestão/critica da palestra'
+    };
+
+    this.eventsDetailService.rating(body).subscribe(response => {
+
+    });
   }
 
   toggleSubscribe() {
