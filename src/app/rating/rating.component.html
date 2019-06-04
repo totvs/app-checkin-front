@@ -1,0 +1,6 @@
+<div class="rate-align-center">
+  <ion-icon name="star" class="rate-size" *ngFor="let num of lenghtRate"
+    (click)="rate(num)" [ngStyle]="{'color': getColor(num)}">
+  </ion-icon>
+</div>
+

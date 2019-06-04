@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Realizar Check-in</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <div id="loadingMessage">Sem Acesso a camera</div>
+    <canvas class='canvas-size' id="canvas" hidden></canvas>
+    <div id="output" hidden>
+      <div id="outputMessage">Nenhum QRCode Encontrado</div>
+      <div hidden><b>Data:</b> <span id="outputData"></span></div>
+    </div>
+  </ion-content>
+</ion-content>

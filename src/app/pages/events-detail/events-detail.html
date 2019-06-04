@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-row>
+          <ion-col size="12" [ngClass]="{'show-favorite': isFavorite}" class="ion-text-right">
+            <ion-icon name="checkmark-circle-outline" size="large" class="icon-heart-empty" (click)="toggleSubscribe()"></ion-icon>
+            <ion-icon name="checkmark-circle" color="success" size="large" class="icon-heart" (click)="toggleSubscribe()"></ion-icon>
+          </ion-col>
+        </ion-row>
+        {{ session.DataHoraInicio | date: 'dd/MM/yyyy' }}
+      </ion-card-subtitle>
+      <ion-card-title>
+        <p>{{ session.Nome_Evento }}</p>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ session.Descricao }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        Avalie o evento
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <rating [(rating)]="rating"></rating>
+      <div padding-top >
+        <ion-textarea placeholder="Deixe seu comentário" rows="4">
+        </ion-textarea>
+      </div>
+      <ion-button expand="block">Avaliar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
