@@ -8,7 +8,7 @@ import { AppConfig } from '../app.config';
 @Injectable({
   providedIn: 'root'
 })
-export class SignUpService {
+export class CheckinService {
 
   data: any;
 
@@ -17,18 +17,15 @@ export class SignUpService {
     public appConfig: AppConfig
   ) {}
 
-  post(): Observable<any> {{
+  post(): Observable<any> {
+
     const body = {
       email: '',
-      macAddress: '',
-      name: '',
-      provider: ''
+      code_event: '',
+      date: ''
+    };
 
-    }
-
-    return this.http
-      .post(this.appConfig.config['API_SIGNUP'], body)
-    }
+    return this.http.post(this.appConfig.config['API_CHECKIN'], body);
   }
 
 }

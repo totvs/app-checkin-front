@@ -5,7 +5,7 @@ import { ToastController } from '@ionic/angular';
 
 import jsQR from 'jsqr';
 
-import { SignUpService } from '../../providers/signup.service';
+import { CheckinService } from '../../providers/checkin.service';
 
 @Component({
   selector: 'page-checkin',
@@ -27,7 +27,7 @@ export class CheckinPage {
   constructor( 
     public router: Router, 
     public toastController: ToastController,
-    private signUpService: SignUpService
+    private checkinService: CheckinService
   ) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -107,7 +107,7 @@ export class CheckinPage {
   }
 
   signUpPost() {
-    this.signUpService.post().subscribe( res => {
+    this.checkinService.post().subscribe( res => {
      console.log('foi')
     });
   }
