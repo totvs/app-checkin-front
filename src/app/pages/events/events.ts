@@ -23,6 +23,7 @@ export class EventsPage implements OnInit {
   shownSessions: any = [];
   groups: any = [];
   confDate: string;
+  public token: string;
 
   constructor(
     public alertCtrl: AlertController,
@@ -36,6 +37,7 @@ export class EventsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginComponent.completeAuthentication();
     this.updateSchedule();
   }
 
@@ -48,6 +50,7 @@ export class EventsPage implements OnInit {
   }
 
   updateSchedule() {
+
     if (this.scheduleList) {
       this.scheduleList.closeSlidingItems();
     }
@@ -55,6 +58,12 @@ export class EventsPage implements OnInit {
     this.confData.getTimeline(this.queryText).subscribe((data: any) => {
       this.groups = data;
     });
+  }
+
+  tokenSend() {
+    console.log(localStorage.length);
+    console.log(localStorage.getItem('token_firebase'));
+    this.token = localStorage.getItem('token_firebase');
   }
 
 }

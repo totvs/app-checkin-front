@@ -12,6 +12,12 @@
 
 </ion-header>
 <ion-content>
+
+  <ion-button (click)='tokenSend()'>Token</ion-button>
+
+  <br>
+
+  {{token}}
   <ion-list #scheduleList [hidden]="shownSessions === 0">
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
       <ion-item-divider sticky>
