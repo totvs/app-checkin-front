@@ -36,6 +36,7 @@ export class EventsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginComponent.completeAuthentication();
     this.updateSchedule();
   }
 
