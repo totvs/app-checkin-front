@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { NotificationsService } from './fcm.service';
+import { UtilsService } from './utils.service.ts/utils.service';
 
 export function loadConfig(config: AppConfig) {
   return async () => {await config.load(); };
@@ -51,7 +52,8 @@ export function loadConfig(config: AppConfig) {
     SplashScreen,
     StatusBar,
     LoginComponent,
-    NotificationsService
+    NotificationsService,
+    UtilsService
   ],
   bootstrap: [AppComponent]
 })

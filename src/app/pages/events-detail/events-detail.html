@@ -12,12 +12,22 @@
     <ion-card-header>
       <ion-card-subtitle>
         <ion-row>
-          <ion-col size="12" [ngClass]="{'show-favorite': isFavorite}" class="ion-text-right">
-            <ion-icon name="checkmark-circle-outline" size="large" class="icon-heart-empty" (click)="toggleSubscribe()"></ion-icon>
-            <ion-icon name="checkmark-circle" color="success" size="large" class="icon-heart" (click)="toggleSubscribe()"></ion-icon>
+          <ion-col size="12">
+            <div class="padding-middle-col">
+              {{ session.DataHoraInicio | date: 'dd/MM/yyyy' }}
+            </div>
           </ion-col>
         </ion-row>
-        {{ session.DataHoraInicio | date: 'dd/MM/yyyy' }}
+        <ion-row>
+          <ion-col size="6" class="ion-text-left">
+            <div class="padding-middle-col ion-text-left">
+              {{ subscriptionLabel }}
+            </div>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <ion-toggle color="success" (click)="toggleSubscribe()"></ion-toggle>
+          </ion-col>
+        </ion-row>
       </ion-card-subtitle>
       <ion-card-title>
         <p>{{ session.Nome_Evento }}</p>
@@ -37,10 +47,10 @@
     <ion-card-content>
       <rating [(rating)]="rating"></rating>
       <div padding-top >
-        <ion-textarea placeholder="Deixe seu comentário" rows="4">
+        <ion-textarea placeholder="Deixe seu comentário" rows="4" [(ngModel)]="ratingDescription">
         </ion-textarea>
       </div>
-      <ion-button expand="block">Avaliar</ion-button>
+      <ion-button expand="block" (click)="eventsRating();" [disabled]="!rating">Avaliar</ion-button>
     </ion-card-content>
   </ion-card>
 

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToastController } from '@ionic/angular';
-
 import { ConferenceData } from '../../providers/conference-data';
 import { EventsDetailService } from './events-detail.service';
+import { UtilsService } from '../../utils.service.ts/utils.service';
 
 @Component({
   selector: 'page-events-detail',
@@ -15,11 +14,13 @@ export class EventsDetailPage implements OnInit {
   defaultHref = '';
   isFavorite = false;
   rating;
+  ratingDescription = '';
   session: any;
+  subscriptionLabel = 'Inscreva-se';
 
   constructor(
     private dataProvider: ConferenceData,
-    private toastController: ToastController,
+    private utilsService: UtilsService,
     private eventsDetailService: EventsDetailService
   ) {}
 
@@ -40,21 +41,55 @@ export class EventsDetailPage implements OnInit {
   eventsRating() {
     const body = {
       email: 'exemplo@totvs.com.br',
-      event: 'Palestra',
-      note: 5,
-      description: 'Sugestão/critica da palestra'
+      event: this.session.Nome_Evento,
+      note: this.rating,
+      description: this.ratingDescription
     };
 
-    this.eventsDetailService.rating(body).subscribe(response => {
+    let color;
+    let message;
 
+    this.eventsDetailService.rating(body).subscribe(response => {
+      message = 'Obrigado por avaliar';
+      color = 'success';
+      this.utilsService.presentToast(message, color);
+      console.log(response);
+    }, err => {
+      message = 'Não foi possível concluir a avaliação';
+      color = 'warning';
+      this.utilsService.presentToast(message, color);
+    });
+  }
+
+  eventsSubscription() {
+    const body = {
+      email: 'exemplo@totvs.com.br',
+      code_event: '001',
+      date: new Date().toISOString()
+    };
+
+    let color;
+    let message;
+
+    this.eventsDetailService.subscription(body).subscribe(response => {
+      message = `Você está inscrito no evento: ${this.session.Nome_Evento}`;
+      color = 'success';
+      this.utilsService.presentToast(message, color);
+    }, err => {
+      message = `Não foi possível concluir a inscrição no evento: ${this.session.Nome_Evento}`;
+      color = 'warning';
+      this.utilsService.presentToast(message, color);
     });
   }
 
   toggleSubscribe() {
     if (this.isFavorite) {
       this.isFavorite = false;
+      this.subscriptionLabel = 'Inscreva-se';
     } else {
       this.isFavorite = true;
+      this.subscriptionLabel = 'Desinscreva-se';
+      this.eventsSubscription();
     }
 
     this.presentToast();
@@ -67,13 +102,7 @@ export class EventsDetailPage implements OnInit {
 
     const color = this.isFavorite ? 'success' : 'warning';
 
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000,
-      position: 'bottom',
-      color: color
-    });
-    toast.present();
+    this.utilsService.presentToast(message, color);
   }
 
 }
