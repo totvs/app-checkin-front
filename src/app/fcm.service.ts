@@ -72,6 +72,7 @@ export class NotificationsService {
 
         const token: string = await messaging.getToken();
         localStorage.setItem('fb', token);
+        alert(token)
 
         console.log('User notifications token:', token);
       } catch (err) {
