@@ -48,7 +48,10 @@ export class EventsPage implements OnInit {
 
   bellStyle(){
     let bell = document.getElementById('wholeContainer');
-    bell.style.top = '1%';
+    if (bell) {
+      bell.style.top = '1%';
+      bell.style.left = '80%';
+    }
   }
 
   logOut() {
