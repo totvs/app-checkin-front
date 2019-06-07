@@ -9,11 +9,11 @@ import { BaseUrlService } from '../../base-url/base-url.service';
 export class EventsDetailService {
 
   private eventsSurvey = this.baseUrl.getBaseUrl() + 'survey/';
-  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscription/';
+  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscribe/';
 
   constructor(private http: HttpClient, private baseUrl: BaseUrlService) { }
 
-  rating(body = {}): Observable<any> {
+  survey(body = {}): Observable<any> {
     return this.http.post(this.eventsSurvey, body);
   }
 

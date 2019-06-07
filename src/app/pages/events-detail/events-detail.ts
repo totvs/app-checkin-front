@@ -39,7 +39,7 @@ export class EventsDetailPage implements OnInit {
     console.log('Clicked', item);
   }
 
-  eventsRating() {
+  eventsSurvey() {
     const body = {
       email: this.email,
       code_event: this.event.event_code,
@@ -50,7 +50,7 @@ export class EventsDetailPage implements OnInit {
     let color;
     let message;
 
-    this.eventsDetailService.rating(body).subscribe(response => {
+    this.eventsDetailService.survey(body).subscribe(response => {
       message = 'Obrigado por avaliar';
       color = 'success';
       this.utilsService.presentToast(message, color);
@@ -65,7 +65,7 @@ export class EventsDetailPage implements OnInit {
   eventsSubscription() {
     const body = {
       email: this.email,
-      code_event: '001',
+      code_event: this.event.event_code,
       date: new Date().toISOString()
     };
 
