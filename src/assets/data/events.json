@@ -1,0 +1,28 @@
+{ "data" : 
+  [
+    {
+      "event_code": "0001",
+      "event_name": "Evento Teste",
+      "description": "Evento teste Descrição",
+      "dateTimeStart": "2019-06-10",
+      "duration": "02:00h",
+      "room": "Auditorio"
+    },
+    {
+      "event_code": "0002",
+      "event_name": "Evento Teste",
+      "description": "Evento teste Descrição",
+      "dateTimeStart": "2019-06-10",
+      "duration": "02:00h",
+      "room": "SALA B"
+    },
+    {
+      "event_code": "0003",
+      "event_name": "Evento Teste",
+      "description": "Evento teste Descrição",
+      "dateTimeStart": "2019-06-10",
+      "duration": "02:00h",
+      "room": "SALA C"
+    }
+  ]
+}

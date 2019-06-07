@@ -12,8 +12,6 @@
 
 </ion-header>
 <ion-content>
-
-  {{token}}
   <ion-list #scheduleList [hidden]="shownSessions === 0">
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
       <ion-item-divider sticky>
@@ -22,12 +20,12 @@
         </ion-label>
       </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let session of group.itens" #slidingItem >
-        <ion-item routerLink="/events/{{session.Codigo_Evento}}">
+      <ion-item-sliding *ngFor="let event of group.itens" #slidingItem >
+        <ion-item routerLink="/events/{{event.event_code}}">
           <ion-label>
-            <h3>{{session.Nome_Evento}}</h3>
+            <h3>{{event.event_name}}</h3>
             <p>
-              {{session.TempoTotal}}: {{session.Sala}}
+              {{event.duration}}: {{event.room}}
             </p>
           </ion-label>
         </ion-item>
@@ -43,4 +41,5 @@
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
     <ion-fab-button (click)="checkin()"><ion-icon name="qr-scanner"></ion-icon></ion-fab-button>
   </ion-fab>
+  {{token}}
 </ion-content>

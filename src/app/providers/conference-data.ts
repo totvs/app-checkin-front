@@ -28,10 +28,10 @@ export class ConferenceData {
 
         data.forEach( element => {
 
-          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.DataHoraInicio));
+          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.dateTimeStart));
 
           if ( search === -1 ) {
-            dataReturn.push({date: this.formatDate(element.DataHoraInicio), itens: [element]});
+            dataReturn.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
           } else {
             dataReturn[search].itens.push(element);
           }
@@ -47,7 +47,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get('https://testecheckin.totvs.com.br:3000/eventos')
+        .get('assets/data/events.json')
         .pipe(map(this.processData, this));
     }
   }

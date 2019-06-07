@@ -55,8 +55,8 @@ export class EventsPage implements OnInit {
       this.scheduleList.closeSlidingItems();
     }
 
-    // this.confData.getTimeline(this.queryText).subscribe((data: any) => {
-    //   this.groups = data;
-    // });
+    this.confData.getTimeline(this.queryText).subscribe((data: any) => {
+      this.groups = data;
+    });
   }
 }
