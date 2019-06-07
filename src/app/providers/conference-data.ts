@@ -24,20 +24,25 @@ export class ConferenceData {
       map((data: any) => {
 
         const dataReturn = [];
+        const dataFilter = [];
         let search = null;
 
         data.forEach( element => {
 
-          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.dateTimeStart));
+          search = element.event_name.includes(queryText);
 
-          if ( search === -1 ) {
-            dataReturn.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
+          if (search) {
+            dataFilter.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
           } else {
-            dataReturn[search].itens.push(element);
+            dataReturn.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
           }
         });
 
-        return dataReturn;
+        if(dataFilter.length) {
+          return dataFilter; 
+        } else { 
+          return dataReturn;
+        }
       })
     );
   }
