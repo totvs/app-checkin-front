@@ -16,6 +16,7 @@ import { AppConfig } from './app.config';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { BaseUrlService } from './base-url/base-url.service';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { NotificationsService } from './fcm.service';
@@ -53,7 +54,8 @@ export function loadConfig(config: AppConfig) {
     StatusBar,
     LoginComponent,
     NotificationsService,
-    UtilsService
+    UtilsService,
+    BaseUrlService
   ],
   bootstrap: [AppComponent]
 })
