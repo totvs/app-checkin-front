@@ -18,4 +18,8 @@ export class UtilsService {
     toast.present();
   }
 
+  getSessionData() {
+    return JSON.parse(sessionStorage.getItem('oidc.user:https://universo.rac.totvs.io/totvs.rac:universototvs2019'));
+  }
+
 }

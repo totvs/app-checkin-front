@@ -12,6 +12,7 @@ import { UtilsService } from '../../utils.service.ts/utils.service';
 export class EventsDetailPage implements OnInit {
 
   defaultHref = '';
+  email = this.utilsService.getSessionData()['profile']['name'][0];
   isFavorite = false;
   rating;
   ratingDescription = '';
@@ -40,8 +41,8 @@ export class EventsDetailPage implements OnInit {
 
   eventsRating() {
     const body = {
-      email: 'exemplo@totvs.com.br',
-      event: this.event.event_name,
+      email: this.email,
+      code_event: this.event.event_code,
       note: this.rating,
       description: this.ratingDescription
     };
@@ -63,7 +64,7 @@ export class EventsDetailPage implements OnInit {
 
   eventsSubscription() {
     const body = {
-      email: 'exemplo@totvs.com.br',
+      email: this.email,
       code_event: '001',
       date: new Date().toISOString()
     };

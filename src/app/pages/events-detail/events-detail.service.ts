@@ -1,15 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+
+import { BaseUrlService } from '../../base-url/base-url.service';
 
 @Injectable()
 export class EventsDetailService {
 
-  private eventsSurvey = 'http://localhost:8180/api/v1/survey';
-  private eventsSubscription = 'http://localhost:8180/api/v1/survey';
+  private eventsSurvey = this.baseUrl.getBaseUrl() + 'survey/';
+  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscription/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private baseUrl: BaseUrlService) { }
 
   rating(body = {}): Observable<any> {
     return this.http.post(this.eventsSurvey, body);
