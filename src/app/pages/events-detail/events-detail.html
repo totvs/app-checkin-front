@@ -12,20 +12,22 @@
     <ion-card-header>
       <ion-card-subtitle>
         <ion-row>
+          <ion-col size="6" class="ion-text-right">
+            <div class="padding-middle-col ion-text-left">
+              <ion-label>
+                {{ subscriptionLabel }}
+              </ion-label>
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-toggle color="success" (click)="toggleSubscribe()"></ion-toggle>
+          </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col size="12">
             <div class="padding-middle-col">
               {{ event.dateTimeStart | date: 'dd/MM/yyyy' }}
             </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="6" class="ion-text-left">
-            <div class="padding-middle-col ion-text-left">
-              {{ subscriptionLabel }}
-            </div>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <ion-toggle color="success" (click)="toggleSubscribe()"></ion-toggle>
           </ion-col>
         </ion-row>
       </ion-card-subtitle>
