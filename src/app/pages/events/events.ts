@@ -23,7 +23,7 @@ export class EventsPage implements OnInit {
   shownSessions: any = [];
   groups: any = [];
   confDate: string;
-  public token: string;
+  public token: string = localStorage.getItem('deviceUUID');
 
   constructor(
     public alertCtrl: AlertController,
