@@ -22,33 +22,36 @@ export class NotificationsService {
 
       navigator.serviceWorker.ready.then((registration) => {
 
-        const messaging = firebase.messaging();
+        if (firebase.messaging.isSupported()) {
 
-        if (!firebase.messaging.isSupported()) {
-          resolve();
-          return;
-        }
+          const messaging = firebase.messaging();
 
-        messaging.useServiceWorker(registration);
+          if (!firebase.messaging.isSupported()) {
+            resolve();
+            return;
+          }
 
-        messaging.usePublicVapidKey(
-         this.appConfig.config['FB_VAPIDKEY']
-        );
+          messaging.useServiceWorker(registration);
 
-        messaging.onMessage((payload) => {
-          console.log(payload);
-        });
+          messaging.usePublicVapidKey(
+          this.appConfig.config['FB_VAPIDKEY']
+          );
 
-        messaging.onTokenRefresh(() => {
-          messaging.getToken().then(
-          (refreshedToken: string) => {
-              console.log(refreshedToken);
-          }).catch((err) => {
-              console.error(err);
+          messaging.onMessage((payload) => {
+            console.log(payload);
           });
-        });
 
-        resolve();
+          messaging.onTokenRefresh(() => {
+            messaging.getToken().then(
+            (refreshedToken: string) => {
+                console.log(refreshedToken);
+            }).catch((err) => {
+                console.error(err);
+            });
+          });
+
+          resolve();
+        }
       }, (err) => {
         reject(err);
       });

@@ -59,11 +59,4 @@ export class EventsPage implements OnInit {
     //   this.groups = data;
     // });
   }
-
-  tokenSend() {
-    console.log(localStorage.length);
-    console.log(localStorage.getItem('token_firebase'));
-    this.token = localStorage.getItem('token_firebase');
-  }
-
 }
