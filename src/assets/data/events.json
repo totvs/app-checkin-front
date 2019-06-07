@@ -2,7 +2,7 @@
   [
     {
       "event_code": "0001",
-      "event_name": "Evento Teste",
+      "event_name": "Palestra de Angular",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
       "duration": "02:00h",
@@ -10,7 +10,7 @@
     },
     {
       "event_code": "0002",
-      "event_name": "Evento Teste",
+      "event_name": "Palestra de NodeJS",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
       "duration": "02:00h",
@@ -18,7 +18,7 @@
     },
     {
       "event_code": "0003",
-      "event_name": "Evento Teste",
+      "event_name": "Palestra de React",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
       "duration": "02:00h",
