@@ -37,12 +37,18 @@ export class EventsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+   this.bellStyle();
     this.loginComponent.completeAuthentication();
     this.updateSchedule();
   }
 
   checkin() {
     this.router.navigateByUrl('/checkin');
+  }
+
+  bellStyle(){
+    let bell = document.getElementById('wholeContainer');
+    bell.style.top = '1%';
   }
 
   logOut() {
