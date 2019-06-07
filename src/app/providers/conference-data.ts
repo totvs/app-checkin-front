@@ -57,7 +57,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get('https://testecheckin.totvs.com.br:3000/eventos/0001')
+        .get('assets/data/eventId.json')
         .pipe(map(this.processData, this));
     }
   }

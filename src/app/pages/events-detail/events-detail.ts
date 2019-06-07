@@ -15,7 +15,7 @@ export class EventsDetailPage implements OnInit {
   isFavorite = false;
   rating;
   ratingDescription = '';
-  session: any;
+  event: any;
   subscriptionLabel = 'Inscreva-se';
 
   constructor(
@@ -26,7 +26,7 @@ export class EventsDetailPage implements OnInit {
 
   ngOnInit() {
     this.dataProvider.loadId().subscribe((data: any) => {
-      this.session = data[0];
+      this.event = data[0];
     });
   }
 
@@ -41,7 +41,7 @@ export class EventsDetailPage implements OnInit {
   eventsRating() {
     const body = {
       email: 'exemplo@totvs.com.br',
-      event: this.session.Nome_Evento,
+      event: this.event.event_name,
       note: this.rating,
       description: this.ratingDescription
     };
@@ -72,11 +72,11 @@ export class EventsDetailPage implements OnInit {
     let message;
 
     this.eventsDetailService.subscription(body).subscribe(response => {
-      message = `Você está inscrito no evento: ${this.session.Nome_Evento}`;
+      message = `Você está inscrito no evento: ${this.event.event_name}`;
       color = 'success';
       this.utilsService.presentToast(message, color);
     }, err => {
-      message = `Não foi possível concluir a inscrição no evento: ${this.session.Nome_Evento}`;
+      message = `Não foi possível concluir a inscrição no evento: ${this.event.event_name}`;
       color = 'warning';
       this.utilsService.presentToast(message, color);
     });
@@ -97,8 +97,8 @@ export class EventsDetailPage implements OnInit {
 
   async presentToast() {
 
-    const message = this.isFavorite ? `Inscrição efetuada no evento: ${this.session.Nome_Evento}` :
-      `Inscrição removida do evento: ${this.session.Nome_Evento}`;
+    const message = this.isFavorite ? `Inscrição efetuada no evento: ${this.event.event_name}` :
+      `Inscrição removida do evento: ${this.event.event_name}`;
 
     const color = this.isFavorite ? 'success' : 'warning';
 

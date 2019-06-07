@@ -14,7 +14,7 @@
         <ion-row>
           <ion-col size="12">
             <div class="padding-middle-col">
-              {{ session.DataHoraInicio | date: 'dd/MM/yyyy' }}
+              {{ event.dateTimeStart | date: 'dd/MM/yyyy' }}
             </div>
           </ion-col>
         </ion-row>
@@ -30,11 +30,11 @@
         </ion-row>
       </ion-card-subtitle>
       <ion-card-title>
-        <p>{{ session.Nome_Evento }}</p>
+        <p>{{ event.event_name }}</p>
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      {{ session.Descricao }}
+      {{ event.description }}
     </ion-card-content>
   </ion-card>
 
