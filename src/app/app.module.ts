@@ -18,7 +18,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BaseUrlService } from './base-url/base-url.service';
 import { environment } from '../environments/environment';
-import { InterceptorModule } from './pages/login/token.interceptor.module';
 import { LoginComponent } from './pages/login/login.component';
 import { NotificationsService } from './fcm.service';
 import { UtilsService } from './utils.service.ts/utils.service';
@@ -34,7 +33,6 @@ export function loadConfig(config: AppConfig) {
     AngularFirestoreModule,
     BrowserModule,
     HttpClientModule,
-    InterceptorModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
