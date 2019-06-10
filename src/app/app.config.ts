@@ -1,10 +1,9 @@
-import { tap } from 'rxjs/operators';
-
 import { Injector, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { firebase } from '@firebase/app';
+
+import config from './../config/config.json';
 
 @Injectable()
 export class AppConfig {
@@ -13,27 +12,27 @@ export class AppConfig {
   constructor (private injector: Injector) {}
 
   public load(): Promise<any> {
-    const http = this.injector.get(HttpClient);
-    return http.get<any>(`config/config.json`).pipe(
-      tap(result => {
-        this.config = result;
 
-        const firebaseEnv = {
-          apiKey: result['FB_APIKEY'],
-          authDomain: result['FB_AUTHDOMAIN'],
-          databaseURL: result['FB_DATABASE_URL'],
-          projectId: result['FB_PROJECTID'],
-          storageBucket: result['FB_STORAGEBUCKET'],
-          messagingSenderId: result['FB_MSGSENDERID'],
-          appId: result['FB_APPID'],
-          vapidKey: result['FB_VAPIDKEY']
-        };
+    return new Promise((resolve, reject) => {
+      this.config = config;
 
-        AngularFireModule.initializeApp(firebaseEnv);
-        firebase.initializeApp(firebaseEnv);
+      const firebaseEnv = {
+        apiKey: config['FB_APIKEY'],
+        authDomain: config['FB_AUTHDOMAIN'],
+        databaseURL: config['FB_DATABASE_URL'],
+        projectId: config['FB_PROJECTID'],
+        storageBucket: config['FB_STORAGEBUCKET'],
+        messagingSenderId: config['FB_MSGSENDERID'],
+        appId: config['FB_APPID'],
+        vapidKey: config['FB_VAPIDKEY']
+      };
 
-      })
-    ).toPromise();
+      AngularFireModule.initializeApp(firebaseEnv);
+      firebase.initializeApp(firebaseEnv);
+
+      resolve();
+    });
+
   }
 
 }
