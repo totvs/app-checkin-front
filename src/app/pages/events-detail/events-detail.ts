@@ -65,12 +65,12 @@ export class EventsDetailPage implements OnInit {
   }
 
   eventsSubscription() {
-    console.log(localStorage.getItem('token_firebase'));
     const body = {
-      email: this.email,
+      userEmail: this.email,
       eventCode: this.event.event_code,
       eventDescription: this.event.description,
       eventDuration: 0,
+      eventName: this.event.event_name,
       eventStartTime: new Date().toISOString(),
       eventRoom: this.event.room,
       enablePushNotification: true,
