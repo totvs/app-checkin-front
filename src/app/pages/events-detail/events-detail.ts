@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
 import { EventsDetailService } from './events-detail.service';
 import { UtilsService } from '../../utils.service.ts/utils.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'page-events-detail',
@@ -22,7 +23,8 @@ export class EventsDetailPage implements OnInit {
   constructor(
     private dataProvider: ConferenceData,
     private utilsService: UtilsService,
-    private eventsDetailService: EventsDetailService
+    private eventsDetailService: EventsDetailService,
+    public loginComponent: LoginComponent,
   ) {}
 
   ngOnInit() {
@@ -81,6 +83,10 @@ export class EventsDetailPage implements OnInit {
       color = 'warning';
       this.utilsService.presentToast(message, color);
     });
+  }
+
+  logOut() {
+    this.loginComponent.logout();
   }
 
   toggleSubscribe() {
