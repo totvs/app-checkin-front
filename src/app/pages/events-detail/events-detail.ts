@@ -65,8 +65,14 @@ export class EventsDetailPage implements OnInit {
   eventsSubscription() {
     const body = {
       email: this.email,
-      code_event: this.event.event_code,
-      date: new Date().toISOString()
+      eventCode: this.event.event_code,
+      eventDescription: this.event.description,
+      eventDuration: 0,
+      eventStartTime: new Date().toISOString(),
+      eventRoom: this.event.room,
+      enablePushNotification: true,
+      notificationToken: localStorage.getItem('token_firebase') ? localStorage.getItem('token_firebase') :
+        localStorage.getItem('deviceUUID')
     };
 
     let color;

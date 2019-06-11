@@ -9,8 +9,8 @@ import { LoginComponent } from '../login/login.component';
 @Injectable()
 export class EventsDetailService {
 
-  private eventsSurvey = this.baseUrl.getBaseUrl() + 'survey/';
-  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscribe/';
+  private eventsSurvey = this.baseUrl.getBaseUrl() + 'v1/survey/';
+  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscription/';
   private user;
 
   constructor(private http: HttpClient, private baseUrl: BaseUrlService, private auth: LoginComponent) {
