@@ -13,7 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class EventsDetailPage implements OnInit {
 
   defaultHref = '';
-  email = 'teste'//this.utilsService.getSessionData()['profile']['name'][0];
+  email = this.utilsService.getSessionData()['profile']['name'][0];
   isFavorite = false;
   rating;
   ratingDescription = '';
@@ -65,6 +65,7 @@ export class EventsDetailPage implements OnInit {
   }
 
   eventsSubscription() {
+    console.log(localStorage.getItem('token_firebase'));
     const body = {
       email: this.email,
       eventCode: this.event.event_code,
