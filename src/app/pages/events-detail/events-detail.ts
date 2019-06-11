@@ -13,7 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class EventsDetailPage implements OnInit {
 
   defaultHref = '';
-  email = this.utilsService.getSessionData()['profile']['name'][0];
+  email = 'teste'//this.utilsService.getSessionData()['profile']['name'][0];
   isFavorite = false;
   rating;
   ratingDescription = '';
