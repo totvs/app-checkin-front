@@ -5,7 +5,7 @@
       "event_name": "Palestra de Angular",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
-      "duration": "02:00h",
+      "duration": 2,
       "room": "Auditorio"
     },
     {
@@ -13,7 +13,7 @@
       "event_name": "Palestra de NodeJS",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
-      "duration": "02:00h",
+      "duration": 3,
       "room": "SALA B"
     },
     {
@@ -21,7 +21,7 @@
       "event_name": "Palestra de React",
       "description": "Evento teste Descrição",
       "dateTimeStart": "2019-06-10",
-      "duration": "02:00h",
+      "duration": 1,
       "room": "SALA C"
     }
   ]
