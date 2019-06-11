@@ -66,7 +66,7 @@ export class EventsDetailPage implements OnInit {
 
   eventsSubscription() {
     const body = {
-      userEmail: this.email,
+      email: this.email,
       eventCode: this.event.event_code,
       eventDescription: this.event.description,
       eventDuration: 0,
