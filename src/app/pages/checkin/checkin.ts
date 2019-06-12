@@ -91,7 +91,6 @@ export class CheckinPage {
         this.outputData.parentElement.hidden = false;
         this.outputData.innerText = code.data;
         this.signUpPost(code.data);
-        window.cancelAnimationFrame(this.req);
       } else {
         this.drawLine({x: 140, y: 200}, {x: 330, y: 200}, '#0c9abe');
         this.drawLine({x: 140, y: 400}, {x: 330, y: 400}, '#0c9abe');
@@ -116,8 +115,10 @@ export class CheckinPage {
 
     this.checkinService.signup(body).subscribe(res => {
       this.utilsService.presentToast('Check-in Realizado com Sucesso', 'success', 3000, 'Universo TOTVS');
+      window.cancelAnimationFrame(this.req);
       this.router.navigateByUrl('/events');
     }, err => {
+      window.cancelAnimationFrame(this.req);
       this.utilsService.presentToast('Não foi possível realizar o check-in', 'warning', 3000, 'Universo TOTVS');
     });
   }
