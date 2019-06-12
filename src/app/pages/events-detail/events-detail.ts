@@ -74,7 +74,7 @@ export class EventsDetailPage implements OnInit {
       eventStartTime: new Date().toISOString(),
       eventRoom: this.event.room,
       enablePushNotification: true,
-      notificationToken: localStorage.getItem('token_firebase') ? localStorage.getItem('token_firebase') :
+      notificationToken: localStorage.getItem('firebase_token') ? localStorage.getItem('firebase_token') :
         localStorage.getItem('deviceUUID')
     };
 

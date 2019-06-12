@@ -74,7 +74,7 @@ export class NotificationsService {
         await messaging.requestPermission();
 
         const token: string = await messaging.getToken();
-        localStorage.setItem('token_firebase', token);
+        localStorage.setItem('firebase_token', token);
 
         console.log('User notifications token:', token);
       } catch (err) {
