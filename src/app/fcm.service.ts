@@ -4,6 +4,7 @@ import {firebase} from '@firebase/app';
 import '@firebase/messaging';
 
 import { AppConfig } from './app.config';
+import { UtilsService } from './utils.service.ts/utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { AppConfig } from './app.config';
 
 export class NotificationsService {
 
-  constructor(private appConfig: AppConfig) { }
+  constructor(private appConfig: AppConfig, private utilsService: UtilsService) { }
 
   init(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
@@ -74,7 +75,7 @@ export class NotificationsService {
         await messaging.requestPermission();
 
         const token: string = await messaging.getToken();
-        sessionStorage.setItem('fbtoken', token);
+        this.utilsService.setLocalStorage('firebase-key', token);
 
         console.log('User notifications token:', token);
       } catch (err) {

@@ -42,4 +42,8 @@ export class UtilsService {
     return  this.options;
   }
 
+  setLocalStorage(key = '', value) {
+    localStorage.setItem(key, value);
+  }
+
 }
