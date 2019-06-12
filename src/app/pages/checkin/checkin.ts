@@ -119,6 +119,7 @@ export class CheckinPage {
       this.utilsService.presentToast('Check-in Realizado com Sucesso', 'success', 3000, 'Universo TOTVS');
     }, err => {
       window.cancelAnimationFrame(this.req);
+      this.router.navigateByUrl('/events');
       this.utilsService.presentToast('Não foi possível realizar o check-in', 'warning', 3000, 'Universo TOTVS');
     });
   }
