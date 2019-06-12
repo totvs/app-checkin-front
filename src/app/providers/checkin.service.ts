@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { AppConfig } from '../app.config';
+
+import { BaseUrlService } from '../base-url/base-url.service';
+import { UtilsService } from '../utils.service.ts/utils.service';
 
 
 @Injectable({
@@ -14,18 +16,12 @@ export class CheckinService {
 
   constructor(
     public http: HttpClient,
-    public appConfig: AppConfig
+    private baseUrlService: BaseUrlService,
+    private utilsService: UtilsService
   ) {}
 
-  post(): Observable<any> {
-
-    const body = {
-      email: '',
-      code_event: '',
-      date: ''
-    };
-
-    return this.http.post(this.appConfig.config['API_CHECKIN'], body);
+  signup(body = {}): Observable<any> {
+    return this.http.post(this.baseUrlService.getBaseUrl() + 'v1/signup', body, this.utilsService.setHeader());
   }
 
 }
