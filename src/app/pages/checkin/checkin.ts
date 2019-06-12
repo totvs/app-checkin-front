@@ -6,6 +6,7 @@ import { ToastController } from '@ionic/angular';
 import jsQR from 'jsqr';
 
 import { CheckinService } from '../../providers/checkin.service';
+import { UtilsService } from '../../utils.service.ts/utils.service';
 
 @Component({
   selector: 'page-checkin',
@@ -24,10 +25,11 @@ export class CheckinPage {
   public req;
   public video;
 
-  constructor( 
-    public router: Router, 
+  constructor(
+    public router: Router,
     public toastController: ToastController,
-    private checkinService: CheckinService
+    private checkinService: CheckinService,
+    private utilsService: UtilsService
   ) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -88,10 +90,8 @@ export class CheckinPage {
         this.outputMessage.hidden = true;
         this.outputData.parentElement.hidden = false;
         this.outputData.innerText = code.data;
-        // this.signUpPost();
-        this.presentToast();
-        this.router.navigateByUrl('/events');
         window.cancelAnimationFrame(this.req);
+        this.signUpPost(code.data);
       } else {
         this.drawLine({x: 140, y: 200}, {x: 330, y: 200}, '#0c9abe');
         this.drawLine({x: 140, y: 400}, {x: 330, y: 400}, '#0c9abe');
@@ -106,21 +106,21 @@ export class CheckinPage {
     this.req = window.requestAnimationFrame(() => this.tick());
   }
 
-  signUpPost() {
-    this.checkinService.post().subscribe( res => {
-     console.log('foi')
-    });
-  }
+  signUpPost(code_event = '') {
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      color: 'success',
-      header: 'Universo TOTVS',
-      message: 'Check-in Realizado com Sucesso!',
-      position: 'bottom',
-      duration: 3000
+    const body = {
+      email: this.utilsService.getSessionData()['profile']['name'][0],
+      code_event,
+      date: new Date().toISOString()
+    };
+
+    this.checkinService.signup(body).subscribe(res => {
+      this.router.navigateByUrl('/events');
+      this.utilsService.presentToast('Check-in Realizado com Sucesso', 'success', 3000, 'Universo TOTVS');
+    }, err => {
+      this.router.navigateByUrl('/events');
+      this.utilsService.presentToast('Não foi possível realizar o check-in', 'warning', 3000, 'Universo TOTVS');
     });
-    toast.present();
   }
 
 }

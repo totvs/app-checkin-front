@@ -13,7 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class EventsDetailPage implements OnInit {
 
   defaultHref = '';
-  email = 'teste'//this.utilsService.getSessionData()['profile']['name'][0];
+  email = this.utilsService.getSessionData()['profile']['name'][0];
   isFavorite = false;
   rating;
   ratingDescription = '';
@@ -70,10 +70,11 @@ export class EventsDetailPage implements OnInit {
       eventCode: this.event.event_code,
       eventDescription: this.event.description,
       eventDuration: 0,
+      eventName: this.event.event_name,
       eventStartTime: new Date().toISOString(),
       eventRoom: this.event.room,
       enablePushNotification: true,
-      notificationToken: localStorage.getItem('token_firebase') ? localStorage.getItem('token_firebase') :
+      notificationToken: localStorage.getItem('firebase-key') ? localStorage.getItem('firebase-key') :
         localStorage.getItem('deviceUUID')
     };
 
