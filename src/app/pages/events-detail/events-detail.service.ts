@@ -11,7 +11,7 @@ import { UtilsService } from '../../utils.service.ts/utils.service';
 export class EventsDetailService {
 
   private eventsSurvey = this.baseUrl.getBaseUrl() + 'v1/survey/';
-  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscription/';
+  private eventsSubscription = this.baseUrl.getBaseUrl() + 'subscribe/';
   private options = {headers: {}};
   private user;
 
