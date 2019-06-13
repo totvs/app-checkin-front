@@ -35,10 +35,12 @@ export class UtilsService {
   }
 
   setHeader() {
-    this.options.headers = {
-      'Authorization': `${this.user.token_type} ${this.user.access_token}`
-    };
-
+    this.getUser();
+    if (!this.options.headers) {
+      this.options.headers = {
+        'Authorization': `${this.user.token_type} ${this.user.access_token}`
+      };
+    }
     return  this.options;
   }
 
