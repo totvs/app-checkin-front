@@ -36,7 +36,7 @@ export class UtilsService {
 
   setHeader() {
     this.getUser();
-    if (!this.options.headers) {
+    if (this.options.headers !== {}) {
       this.options.headers = {
         'Authorization': `${this.user.token_type} ${this.user.access_token}`
       };
