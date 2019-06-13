@@ -92,6 +92,7 @@ export class CheckinPage {
         this.outputData.innerText = code.data;
         window.cancelAnimationFrame(this.req);
         this.signUpPost(code.data);
+        return code.data
       } else {
         this.drawLine({x: 140, y: 200}, {x: 330, y: 200}, '#0c9abe');
         this.drawLine({x: 140, y: 400}, {x: 330, y: 400}, '#0c9abe');
