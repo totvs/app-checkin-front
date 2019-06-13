@@ -14,23 +14,29 @@ import { LoginComponent } from '../pages/login/login.component';
 export class CheckinService {
 
   data: any;
+  private options = {headers: {}};
+  private user;
 
   constructor(
     public http: HttpClient,
     private baseUrlService: BaseUrlService,
     private utilsService: UtilsService,
     private auth: LoginComponent
-  ) {}
+  ) {
+    this.getUser();
+  }
 
-  async signup(body = {}): Promise<Observable<any>> {
-    const options = {headers: {}};
-    const user = await this.auth.getUser();
+  async getUser() {
+    return this.user = await this.auth.getUser();
+  }
 
-    options.headers = {
-      'Authorization': `${user.token_type} ${user.access_token}`
+  signup(body = {}): Observable<any> {
+
+    this.options.headers = {
+      'Authorization': `${this.user.token_type} ${this.user.access_token}`
     };
 
-    return this.http.post(this.baseUrlService.getBaseUrl() + 'v1/signup', body, options);
+    return this.http.post(this.baseUrlService.getBaseUrl() + 'v1/signup', body, this.options);
   }
 
 }
