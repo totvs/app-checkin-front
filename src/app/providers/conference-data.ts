@@ -30,10 +30,10 @@ export class ConferenceData {
 
         data.forEach( element => {
 
-          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.dateTimeStart));
+          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.dateTimeStart.slice(0,10)));
 
           if ( search === -1 ) {
-            dataReturn.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
+            dataReturn.push({date: this.formatDate(element.dateTimeStart.slice(0,10)), itens: [element]});
           } else {
             dataReturn[search].itens.push(element);
           }
@@ -47,7 +47,7 @@ export class ConferenceData {
             search = element.event_name.toLowerCase().includes(queryText.toLowerCase());
   
             if (search) {
-              dataFilter.push({date: this.formatDate(element.dateTimeStart), itens: [element]});
+              dataFilter.push({date: this.formatDate(element.dateTimeStart.slice(0,10)), itens: [element]});
             }
           });
 
