@@ -1,9 +1,9 @@
 { "data": 
   [{
-    "event_code": "0001",
-    "event_name": "#Fluig: Como tornar mais eficaz a comunicação interna da sua empresa?",
-    "description": "A comunicação interna nas corporações é um desafio. Nessa atividade teremos como pano de fundo a experiência da TOTVS, que criou um portal interno para ser um grande hub de informações com seus colaboradores.",
-    "dateTimeStart": "2019-06-25",
+    "event_code": "0004",
+    "event_name": "Aprenda a usar o frame CORE + THF para desenvolver novas aplicações para os produtos TOTVS",
+    "description": "Conheça a ferramenta que irá agiliar a criação de aplicativos na plataforma TOTVS. Vamos construir um app que irá explorar os principais componentes de uma frameCore, como autenticação, autorização, padronização de componentes, deploy em nuvem, etc.",
+    "dateTimeStart": "2019-06-25 13:00:00",
     "duration": 45,
     "room": "Labs"
   }]
