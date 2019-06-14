@@ -1,10 +1,10 @@
 { "data": 
   [{
     "event_code": "0001",
-    "event_name": "Palestra de Angular",
-    "description": "Evento teste Descrição",
-    "dateTimeStart": "2019-06-10",
-    "duration": "02:00h",
-    "room": "Auditorio"
+    "event_name": "#Fluig: Como tornar mais eficaz a comunicação interna da sua empresa?",
+    "description": "A comunicação interna nas corporações é um desafio. Nessa atividade teremos como pano de fundo a experiência da TOTVS, que criou um portal interno para ser um grande hub de informações com seus colaboradores.",
+    "dateTimeStart": "2019-06-25",
+    "duration": 45,
+    "room": "Labs"
   }]
 }

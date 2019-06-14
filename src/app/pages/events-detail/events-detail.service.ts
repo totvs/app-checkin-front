@@ -41,4 +41,11 @@ export class EventsDetailService {
     return this.http.post(this.eventsSubscription, body, this.options);
   }
 
+  subscriptionDelete(eventCode): Observable<any> {
+    this.options.headers = {
+      'Authorization': `${this.user.token_type} ${this.user.access_token}`
+    };
+    return this.http.delete(`this.eventsSubscription/${eventCode}`, this.options);
+  }
+
 }

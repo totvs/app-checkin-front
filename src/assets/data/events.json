@@ -2,27 +2,91 @@
   [
     {
       "event_code": "0001",
-      "event_name": "Palestra de Angular",
-      "description": "Evento teste Descrição",
-      "dateTimeStart": "2019-06-10",
-      "duration": 2,
-      "room": "Auditorio"
+      "event_name": "#Fluig: Como tornar mais eficaz a comunicação interna da sua empresa?",
+      "description": "A comunicação interna nas corporações é um desafio. Nessa atividade teremos como pano de fundo a experiência da TOTVS, que criou um portal interno para ser um grande hub de informações com seus colaboradores.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
     },
     {
       "event_code": "0002",
-      "event_name": "Palestra de NodeJS",
-      "description": "Evento teste Descrição",
-      "dateTimeStart": "2019-06-10",
-      "duration": 3,
-      "room": "SALA B"
+      "event_name": "Mindset empreendedor com Michelle Messina diretamente do Vale do Silício",
+      "description": "Focada nos tópicos-chave para empreendedores e as necessidades de seus times em crescer e dimensionar o business, este workshop traz os insights e as melhores práticas das mais bem-sucedidas startups, investidores e empresas do Vale do Silício, além de dicas e sugestões para aplicar em seu negócio.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
     },
     {
       "event_code": "0003",
-      "event_name": "Palestra de React",
-      "description": "Evento teste Descrição",
-      "dateTimeStart": "2019-06-10",
-      "duration": 1,
-      "room": "SALA C"
+      "event_name": "TDS Replay: o que é e como dará mais velocidade de resposta aos seus chamados com a TOTVS",
+      "description": "Entenda como o TDS Replay facilita a atuação imediata do suporte TOTVS, por meio de um único arquivo e em um único processo. Ensinaremos você a usar a ferramenta e ter ganhos com ela.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0004",
+      "event_name": "Aprenda a usar o frame CORE + THF para desenvolver novas aplicações para os produtos TOTVS",
+      "description": "Conheça a ferramenta que irá agiliar a criação de aplicativos na plataforma TOTVS. Vamos construir um app que irá explorar os principais componentes de uma frameCore, como autenticação, autorização, padronização de componentes, deploy em nuvem, etc.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0005",
+      "event_name": "Gravação TOTVS TALKS: Top Voices LinkedIn",
+      "description": "Tema: Emprendedorismo e Inovação na era digital",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0006",
+      "event_name": "O que o investidor do Vale do Silício deseja de uma startup? Com Michelle Messina",
+      "description": "Entender o mindset dos investidores e o que eles buscam quando triam e filtram negócios é parte essencial de toda estratégia de captação de fundos. Mas, você sabe quais tipos de oportunidades e pitches atendem às necessidades dos investidores e quais são os itens essenciais na sua primeira apresentação? Nesta apresentação, Michelle falará sobre como os investidores fazem dinheiro, o que buscam nos negócios, entre outros temas.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0007",
+      "event_name": "#DesignThinking: Construindo o novo varejo. Como será a experiência de compra em 2050?",
+      "description": "As mudanças no coportamento do consumidor e a experiencia Omnichannel já são conhecidas. Como será a evolução a partir de agora? Vamos aplicar o Design Thinking para imaginar a experiência de compra daqui 30 anos.",
+      "dateTimeStart": "2019-06-25",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0008",
+      "event_name": "Desenvolvendo e implementando modelos de machine learning na Carol",
+      "description": "Demonstraremos ao vivo como criar skills e modelos na Carol, plataforma de Inteligencia Artificial da TOTVS e discutiremos métodos de Data Science que usamos por baixo dos panos para fazer tudo isso possível",
+      "dateTimeStart": "2019-06-26",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0009",
+      "event_name": "TL++: Como trabalhar com os novos recursos da linguagem para modernizar suas aplicações",
+      "description": "Nessa atividade vamos detalhar recursos novos da linguagem TL++ e mostrar como utilizá-los para modernizar suas aplicações.",
+      "dateTimeStart": "2019-06-26",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0010",
+      "event_name": "#DesignThinking: Como construir uma equipe de alta performance?",
+      "description": "Novas tecnologias impactam em novos modelos de gestão de pessoas? Nessa atividade vamos descobrir como usar a tecnologia para levar equipe à tão sonhada alta performance por meio do Design Thinking.",
+      "dateTimeStart": "2019-06-26",
+      "duration": 45,
+      "room": "Labs"
+    },
+    {
+      "event_code": "0011",
+      "event_name": "#DesignThinking: Como otimizar processos internos com novas tecnologias reduzindo a burocracia?",
+      "description": "É possível otimizar diversos processos internos com novas tecnologias. e com isso reduzir a burocracia do dia-a-dia corporativo. Vamos aplicar o Design Thinking para levantar as reais necessidades das empresas nesse sentido.",
+      "dateTimeStart": "2019-06-26",
+      "duration": 45,
+      "room": "Labs"
     }
   ]
 }

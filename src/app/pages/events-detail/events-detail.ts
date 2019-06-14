@@ -64,7 +64,7 @@ export class EventsDetailPage implements OnInit {
     });
   }
 
-  eventsSubscription() {
+  eventsSubscription(subscribption) {
     const body = {
       email: this.email,
       eventCode: this.event.event_code,
@@ -81,15 +81,29 @@ export class EventsDetailPage implements OnInit {
     let color;
     let message;
 
-    this.eventsDetailService.subscription(body).subscribe(response => {
-      message = `Você está inscrito no evento: ${this.event.event_name}`;
-      color = 'success';
-      this.utilsService.presentToast(message, color);
-    }, err => {
-      message = `Não foi possível concluir a inscrição no evento: ${this.event.event_name}`;
-      color = 'warning';
-      this.utilsService.presentToast(message, color);
-    });
+    if (subscribption) {
+      this.eventsDetailService.subscription(body).subscribe(response => {
+        message = `Você está inscrito no evento: ${this.event.event_name}`;
+        color = 'success';
+        this.utilsService.presentToast(message, color);
+      }, err => {
+        message = `Não foi possível concluir a inscrição no evento: ${this.event.event_name}`;
+        color = 'warning';
+        this.utilsService.presentToast(message, color);
+      });
+    } else {
+      this.eventsDetailService.subscriptionDelete(this.event.event_code).subscribe(response => {
+        message = `Sua inscrição no evento: ${this.event.event_name} foi cancelada.`;
+        color = 'success';
+        this.utilsService.presentToast(message, color);
+      }, err => {
+        message = `Não foi possível cancelar sua  a inscrição no evento: ${this.event.event_name}`;
+        color = 'warning';
+        this.utilsService.presentToast(message, color);
+      });
+    }
+
+
   }
 
   logOut() {
@@ -100,10 +114,11 @@ export class EventsDetailPage implements OnInit {
     if (this.isFavorite) {
       this.isFavorite = false;
       this.subscriptionLabel = 'Inscreva-se';
+      this.eventsSubscription(false);
     } else {
       this.isFavorite = true;
       this.subscriptionLabel = 'Desinscreva-se';
-      this.eventsSubscription();
+      this.eventsSubscription(true);
     }
 
     this.presentToast();
