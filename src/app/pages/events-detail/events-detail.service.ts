@@ -45,7 +45,7 @@ export class EventsDetailService {
     this.options.headers = {
       'Authorization': `${this.user.token_type} ${this.user.access_token}`
     };
-    return this.http.delete(`this.eventsSubscription/${eventCode}`, this.options);
+    return this.http.delete(`${this.eventsSubscription}/${eventCode}`, this.options);
   }
 
 }
