@@ -28,7 +28,7 @@
           <ion-item routerLink="/events/{{event.event_code}}">
             <ion-label>
               <h3>{{event.event_name}}</h3>
-              <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.dateTimeStart | date: 'HH:mm' }}</ion-badge>
+              <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.dateTimeStart | date: 'H:mm' }}</ion-badge>
               <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.duration}}</ion-badge>
               <ion-badge color="secondary" style="margin-right: 1%;">Local: {{event.room}}</ion-badge>
             </ion-label>
