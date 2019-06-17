@@ -39,16 +39,16 @@ function refreshNotifications(sitekey, UUID) {
                   let childrenMsg = document.getElementById('notificationChild');
                   if (notification.id !== childrenMsg.getAttribute('push-uid')) {
                     document.getElementById('ncBody').appendChild(notificationChildDiv);
-                    // const increment = (parseInt(document.getElementById('unreadNotificationCount').innerText) + 1);
-                    document.getElementById('unreadNotificationCount').innerText = 'Nova';
+                    const increment = data.notifications.length - msgs.childNodes.length ;
+                    document.getElementById('unreadNotificationCount').innerText = increment.toString();
                     document.getElementById('unreadNotificationCount').style.display = 'block';
                   }
 
                 })
               } else {
                 document.getElementById('ncBody').appendChild(notificationChildDiv);
-                const increment = (parseInt(document.getElementById('unreadNotificationCount').innerText) + 1);
-                document.getElementById('unreadNotificationCount').innerText = 'Nova';
+                const increment = data.notifications.length - msgs.childNodes.length ;
+                document.getElementById('unreadNotificationCount').innerText = increment.toString();
                 document.getElementById('unreadNotificationCount').style.display = 'block';
               }
 
