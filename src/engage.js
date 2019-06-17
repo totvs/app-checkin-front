@@ -48,13 +48,14 @@ function refreshNotifications(sitekey, UUID) {
                 msgs.childNodes.forEach( function(item){
 
                   let childrenMsg = document.getElementById('notificationChild');
-                  if (notification.id !== childrenMsg.getAttribute('push-uid')) {
-                    document.getElementById('ncBody').appendChild(notificationChildDiv);
-                    const increment = data.notifications.length - msgs.childNodes.length ;
-                    document.getElementById('unreadNotificationCount').innerText = increment.toString();
-                    document.getElementById('unreadNotificationCount').style.display = 'block';
+                  if (childrenMsg !== null) {
+                    if (notification.id !== childrenMsg.getAttribute('push-uid')) {
+                      document.getElementById('ncBody').appendChild(notificationChildDiv);
+                      const increment = data.notifications.length - msgs.childNodes.length ;
+                      document.getElementById('unreadNotificationCount').innerText = increment.toString();
+                      document.getElementById('unreadNotificationCount').style.display = 'block';
+                    }
                   }
-
                 })
               } else {
                 document.getElementById('ncBody').appendChild(notificationChildDiv);
