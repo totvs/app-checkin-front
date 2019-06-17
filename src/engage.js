@@ -71,7 +71,9 @@ function refreshNotifications(sitekey, UUID) {
         });
       }
 
-    setTimeout(refreshNotifications(atob(siteKey), UUID), 20000);
+      setTimeout(() => {
+        refreshNotifications(atob(siteKey), UUID)
+      }, 10000);
     
   }
 };
