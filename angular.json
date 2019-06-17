@@ -16,6 +16,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
+              "src/engage.js",
               "src/config",
               {
                 "glob": "**/*",
