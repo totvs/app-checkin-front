@@ -80,6 +80,7 @@ export class EventsDetailPage implements OnInit {
       eventStartTime: new Date().toISOString(),
       eventRoom: this.event.room,
       enablePushNotification: true,
+      NotificationService: localStorage.getItem('firebase-key') ? 'Firebase' : 'EngageSpot',
       notificationToken: localStorage.getItem('firebase-key') ? localStorage.getItem('firebase-key') :
         localStorage.getItem('deviceUUID')
     };
