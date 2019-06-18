@@ -4,6 +4,7 @@ import { ConferenceData } from '../../providers/conference-data';
 import { EventsDetailService } from './events-detail.service';
 import { UtilsService } from '../../utils.service.ts/utils.service';
 import { LoginComponent } from '../login/login.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'page-events-detail',
@@ -25,11 +26,16 @@ export class EventsDetailPage implements OnInit {
     private utilsService: UtilsService,
     private eventsDetailService: EventsDetailService,
     public loginComponent: LoginComponent,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
-    this.dataProvider.loadId().subscribe((data: any) => {
-      this.event = data[0];
+    this.route
+      .params
+      .subscribe(params => {
+        this.dataProvider.loadId(params['id']).subscribe((data: any) => {
+          this.event = data;
+        });
     });
   }
 

@@ -14,6 +14,7 @@ export class ConferenceData {
   data: any;
 
   private eventsApi = this.baseUrl.getBaseUrl() + 'v1/event/';
+  private eventCode = '';
 
   constructor(
     public http: HttpClient,
@@ -79,10 +80,6 @@ export class ConferenceData {
     );
   }
 
-  order(data) {
-
-  }
-
   load(): any {
     if (this.data) {
       return of(this.data);
@@ -93,18 +90,29 @@ export class ConferenceData {
     }
   }
 
-  loadId(): any {
+  loadId(event): any {
+    this.eventCode = event;
     if (this.data) {
       return of(this.data);
     } else {
       return this.http
-        .get('assets/data/eventId.json')
-        .pipe(map(this.processData, this));
+        .get(this.eventsApi)
+        .pipe(map(this.processDataId, this));
     }
   }
 
   processData(data: any) {
     return this.changeTimeZone(data["Itens"]);
+  }
+
+  processDataId(data: any) {
+    let selected = {}
+    data["Itens"].forEach(element => {
+      if (element.EVENT_CODE === this.eventCode) {
+        selected = element
+      }
+    });
+    return selected;
   }
 
 }
