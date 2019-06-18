@@ -50,7 +50,7 @@ export class EventsDetailPage implements OnInit {
   eventsSurvey() {
     const body = {
       email: this.email,
-      code_event: this.event.event_code,
+      code_event: this.event.EVENT_CODE,
       note: this.rating,
       description: this.ratingDescription
     };
@@ -110,7 +110,6 @@ export class EventsDetailPage implements OnInit {
       });
     }
 
-
   }
 
   logOut() {
@@ -133,8 +132,8 @@ export class EventsDetailPage implements OnInit {
 
   async presentToast() {
 
-    const message = this.isFavorite ? `Inscrição efetuada no evento: ${this.event.event_name}` :
-      `Inscrição removida do evento: ${this.event.event_name}`;
+    const message = this.isFavorite ? `Inscrição efetuada no evento: ${this.event.EVENT_NAME}` :
+      `Inscrição removida do evento: ${this.event.EVENT_NAME}`;
 
     const color = this.isFavorite ? 'success' : 'warning';
 

@@ -29,7 +29,7 @@
             <ion-label>
               <h3>{{event.EVENT_NAME}}</h3>
               <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.DATETIMESTART | date: 'H:mm' }}</ion-badge>
-              <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.DURATION }}</ion-badge>
+              <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.DURATION | slice:0:5}}</ion-badge>
               <ion-badge color="secondary" style="margin-right: 1%;">Local: {{event.ROOM}}</ion-badge>
             </ion-label>
           </ion-item>
