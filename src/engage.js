@@ -77,7 +77,7 @@ function refreshNotifications(sitekey, UUID) {
     
   }
 };
-  xmlhttp.open("GET", `https://internalapi.engagespot.co/v2/fetch_notifications.php?siteKey=${atob(siteKey)}&user=8831cacd-82b1-41db-8857-a2e8282f0674`, true);
+  xmlhttp.open("GET", `https://internalapi.engagespot.co/v2/fetch_notifications.php?siteKey=${atob(siteKey)}&user=${localStorage.getItem('_webPushUserHash')}`, true);
   xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
   xmlhttp.setRequestHeader('Content-type', 'application/ecmascript');
   xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
