@@ -90,21 +90,21 @@ export class EventsDetailPage implements OnInit {
 
     if (subscribption) {
       this.eventsDetailService.subscription(body).subscribe(response => {
-        message = `Você está inscrito no evento: ${this.event.event_name}`;
+        message = `Você está inscrito no evento: ${this.event.EVENT_NAME}`;
         color = 'success';
         this.utilsService.presentToast(message, color);
       }, err => {
-        message = `Não foi possível concluir a inscrição no evento: ${this.event.event_name}`;
+        message = `Não foi possível concluir a inscrição no evento: ${this.event.EVENT_NAME}`;
         color = 'warning';
         this.utilsService.presentToast(message, color);
       });
     } else {
-      this.eventsDetailService.subscriptionDelete(this.event.event_code).subscribe(response => {
-        message = `Sua inscrição no evento: ${this.event.event_name} foi cancelada.`;
+      this.eventsDetailService.subscriptionDelete(this.event.EVENT_CODE).subscribe(response => {
+        message = `Sua inscrição no evento: ${this.event.EVENT_NAME} foi cancelada.`;
         color = 'success';
         this.utilsService.presentToast(message, color);
       }, err => {
-        message = `Não foi possível cancelar sua  a inscrição no evento: ${this.event.event_name}`;
+        message = `Não foi possível cancelar sua  a inscrição no evento: ${this.event.EVENT_NAME}`;
         color = 'warning';
         this.utilsService.presentToast(message, color);
       });
