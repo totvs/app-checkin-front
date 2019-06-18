@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+import { BaseUrlService } from '../base-url/base-url.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,20 @@ export class ConferenceData {
 
   data: any;
 
-  constructor(public http: HttpClient) {}
+  private eventsApi = this.baseUrl.getBaseUrl() + 'v1/event/';
+
+  constructor(
+    public http: HttpClient,
+    private baseUrl: BaseUrlService
+  ) {}
+
+  changeTimeZone(data) {
+    data.forEach(element => {
+      element.DATETIMESTART = element.DATETIMESTART.replace(/\s/g, 'T');
+    });
+
+    return data;
+  }
 
   formatDate(date) {
     return `${date.substring(8, 10)}/${date.substring(5, 7)}/${date.substring(0, 4)}`;
@@ -30,10 +45,10 @@ export class ConferenceData {
 
         data.forEach( element => {
 
-          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.dateTimeStart.slice(0,10)));
+          search = dataReturn.map(function(e) { return e.date; }).indexOf(this.formatDate(element.DATETIMESTART.slice(0,10)));
 
           if ( search === -1 ) {
-            dataReturn.push({date: this.formatDate(element.dateTimeStart.slice(0,10)), itens: [element]});
+            dataReturn.push({date: this.formatDate(element.DATETIMESTART.slice(0,10)), itens: [element]});
           } else {
             dataReturn[search].itens.push(element);
           }
@@ -47,7 +62,7 @@ export class ConferenceData {
             search = element.event_name.toLowerCase().includes(queryText.toLowerCase());
   
             if (search) {
-              dataFilter.push({date: this.formatDate(element.dateTimeStart.slice(0,10)), itens: [element]});
+              dataFilter.push({date: this.formatDate(element.DATETIMESTART.slice(0,10)), itens: [element]});
             }
           });
 
@@ -73,7 +88,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get('assets/data/events.json')
+        .get(this.eventsApi)
         .pipe(map(this.processData, this));
     }
   }
@@ -89,7 +104,7 @@ export class ConferenceData {
   }
 
   processData(data: any) {
-    return data.data;
+    return this.changeTimeZone(data["Itens"]);
   }
 
 }

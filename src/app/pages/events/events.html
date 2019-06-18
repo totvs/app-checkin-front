@@ -25,12 +25,12 @@
         </ion-item-divider>
 
         <ion-item-sliding *ngFor="let event of group.itens" #slidingItem >
-          <ion-item routerLink="/events/{{event.event_code}}">
+          <ion-item routerLink="/events/{{event.EVENT_CODE}}">
             <ion-label>
-              <h3>{{event.event_name}}</h3>
-              <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.dateTimeStart | date: 'H:mm' }}</ion-badge>
-              <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.duration}}</ion-badge>
-              <ion-badge color="secondary" style="margin-right: 1%;">Local: {{event.room}}</ion-badge>
+              <h3>{{event.EVENT_NAME}}</h3>
+              <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.DATETIMESTART | date: 'H:mm' }}</ion-badge>
+              <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.DURATION }}</ion-badge>
+              <ion-badge color="secondary" style="margin-right: 1%;">Local: {{event.ROOM}}</ion-badge>
             </ion-label>
           </ion-item>
 

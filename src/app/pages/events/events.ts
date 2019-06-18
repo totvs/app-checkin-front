@@ -46,7 +46,7 @@ export class EventsPage implements OnInit {
     this.router.navigateByUrl('/checkin');
   }
 
-  bellStyle(){
+  bellStyle() {
     let bell = document.getElementById('wholeContainer');
     if (bell) {
       bell.style.top = '1%';
