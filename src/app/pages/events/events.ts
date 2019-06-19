@@ -55,12 +55,12 @@ export class EventsPage implements OnInit {
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
+    this.updateSchedule();
 
     setTimeout(() => {
       console.log('Async operation has ended');
-      event.target.complete();
     }, 2000);
+      event.target.complete();
   }
 
   logOut() {
