@@ -60,7 +60,7 @@ export class ConferenceData {
 
             element.itens.forEach( element => {
 
-            search = element.event_name.toLowerCase().includes(queryText.toLowerCase());
+            search = element.EVENT_NAME.toLowerCase().includes(queryText.toLowerCase());
   
             if (search) {
               dataFilter.push({date: this.formatDate(element.DATETIMESTART.slice(0,10)), itens: [element]});
