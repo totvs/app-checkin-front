@@ -20,6 +20,7 @@ export class EventsDetailPage implements OnInit {
   ratingDescription = '';
   event: any;
   subscriptionLabel = 'Inscreva-se';
+  initial = false;
 
   constructor(
     private dataProvider: ConferenceData,
@@ -36,8 +37,13 @@ export class EventsDetailPage implements OnInit {
         this.dataProvider.loadId(params['id']).subscribe((data: any) => {
           this.event = data;
           if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`)) {
-            this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? false : true;
-            this.toggleSubscribe(true);
+            if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true') {
+              this.subscriptionLabel = 'Desinscreva-se';
+              this.initial = true;
+              this.isFavorite = true;
+            } else {
+              this.subscriptionLabel = 'Inscreva-se';
+            }
           }
         });
     });
@@ -124,23 +130,21 @@ export class EventsDetailPage implements OnInit {
     this.loginComponent.logout();
   }
 
-  toggleSubscribe(start?) {
-    if (this.isFavorite) {
-      this.isFavorite = false;
-      this.subscriptionLabel = 'Inscreva-se';
-      if (!start) {
-        this.eventsSubscription(false);
-      }
-    } else {
-      this.isFavorite = true;
-      this.subscriptionLabel = 'Desinscreva-se';
-      if (!start) {
+  toggleSubscribe(event) {
+    if (!this.initial) {
+      if (!event.detail.checked || this.isFavorite) {
+        this.isFavorite = false;
+        this.subscriptionLabel = 'Inscreva-se';
+          this.eventsSubscription(false);
+      } else {
+        this.isFavorite = true;
+        this.subscriptionLabel = 'Desinscreva-se';
         this.eventsSubscription(true);
       }
-    }
-    if (!start) {
       this.presentToast();
     }
+    this.initial = false;
+   
   }
 
   async presentToast() {
