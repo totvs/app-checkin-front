@@ -6,6 +6,7 @@ import { AlertController, IonList, LoadingController, ModalController, ToastCont
 import { ConferenceData } from '../../providers/conference-data';
 import { LoginComponent } from '../login/login.component';
 import { NotificationsService } from '../../fcm.service';
+import { UtilsService } from '../../utils.service.ts/utils.service';
 
 @Component({
   selector: 'page-events',
@@ -33,10 +34,20 @@ export class EventsPage implements OnInit {
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public router: Router,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
+    const current_time = new Date().getTime();
+
+    if (!this.utilsService.getSessionData()['expirest_at']) {
+      this.router.navigateByUrl('/login');
+    } else if (current_time > this.utilsService.getSessionData()['expirest_at']) {
+      this.utilsService.presentToast('Efetue o login novamente', 'success', 2000, 'Universo Totvs');
+      this.logOut();
+    }
+
    this.bellStyle();
     this.loginComponent.completeAuthentication();
     this.updateSchedule();
