@@ -40,6 +40,7 @@ export class NotificationsService {
 
           messaging.onMessage((payload) => {
             console.log(payload);
+            alert(payload.notification.body)
           });
 
           messaging.onTokenRefresh(() => {

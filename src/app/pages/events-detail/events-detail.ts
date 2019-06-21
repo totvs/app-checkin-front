@@ -37,11 +37,7 @@ export class EventsDetailPage implements OnInit {
           this.event = data;
           if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`)) {
             this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? true : false;
-            if (this.isFavorite) {
-              this.subscriptionLabel = 'Desinscreva-se';
-            } else {
-              this.subscriptionLabel = 'Inscreva-se';
-            }
+            this.toggleSubscribe(true);
           }
         });
     });
@@ -128,15 +124,19 @@ export class EventsDetailPage implements OnInit {
     this.loginComponent.logout();
   }
 
-  toggleSubscribe() {
+  toggleSubscribe(start?) {
     if (this.isFavorite) {
       this.isFavorite = false;
       this.subscriptionLabel = 'Inscreva-se';
-      this.eventsSubscription(false);
+      if (!start) {
+        this.eventsSubscription(false);
+      }
     } else {
       this.isFavorite = true;
       this.subscriptionLabel = 'Desinscreva-se';
-      this.eventsSubscription(true);
+      if (!start) {
+        this.eventsSubscription(true);
+      }
     }
 
     this.presentToast();
