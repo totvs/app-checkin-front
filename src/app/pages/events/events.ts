@@ -39,18 +39,23 @@ export class EventsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    const current_time = new Date().getTime();
-
-    if (!this.utilsService.getSessionData()['expirest_at']) {
-      this.router.navigateByUrl('/login');
-    } else if (current_time > this.utilsService.getSessionData()['expirest_at']) {
-      this.utilsService.presentToast('Efetue o login novamente', 'success', 2000, 'Universo Totvs');
-      this.logOut();
-    }
-
    this.bellStyle();
     this.loginComponent.completeAuthentication();
     this.updateSchedule();
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    const current_time = new Date().getTime();
+
+    if (this.utilsService.getSessionData()) {
+      if (!this.utilsService.getSessionData()['expirest_at']) {
+        this.router.navigateByUrl('/login');
+      } else if (current_time > this.utilsService.getSessionData()['expirest_at']) {
+        this.utilsService.presentToast('Efetue o login novamente', 'success', 2000, 'Universo Totvs');
+        this.logOut();
+      }
+    }
   }
 
   checkin() {
