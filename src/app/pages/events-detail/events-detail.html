@@ -23,7 +23,7 @@
             </div>
           </ion-col>
           <ion-col class="ion-text-right">
-            <ion-toggle color="success" [(ngModel)]="isFavorite" (click)="toggleSubscribe()"></ion-toggle>
+            <ion-toggle color="success" [(ngModel)]="isFavorite" (ionChange)="toggleSubscribe()"></ion-toggle>
           </ion-col>
         </ion-row>
         <ion-row>
