@@ -85,7 +85,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get(this.eventsApi)
+        .get('assets/data/events.json') //this.eventsApi
         .pipe(map(this.processData, this));
     }
   }
@@ -96,7 +96,7 @@ export class ConferenceData {
       return of(this.data);
     } else {
       return this.http
-        .get(this.eventsApi)
+        .get('assets/data/events.json') //this.eventsApi
         .pipe(map(this.processDataId, this));
     }
   }
