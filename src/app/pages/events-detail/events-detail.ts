@@ -35,6 +35,9 @@ export class EventsDetailPage implements OnInit {
       .subscribe(params => {
         this.dataProvider.loadId(params['id']).subscribe((data: any) => {
           this.event = data;
+          if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`)) {
+            this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? true : false;
+          }
         });
     });
   }
@@ -94,6 +97,7 @@ export class EventsDetailPage implements OnInit {
       this.eventsDetailService.subscription(body).subscribe(response => {
         message = `Você está inscrito no evento: ${this.event.EVENT_NAME}`;
         color = 'success';
+        localStorage.setItem(`subscribe_${this.event.EVENT_CODE}`, 'true');
         this.utilsService.presentToast(message, color);
       }, err => {
         message = `Não foi possível concluir a inscrição no evento: ${this.event.EVENT_NAME}`;
@@ -104,6 +108,7 @@ export class EventsDetailPage implements OnInit {
       this.eventsDetailService.subscriptionDelete(this.event.EVENT_CODE).subscribe(response => {
         message = `Sua inscrição no evento: ${this.event.EVENT_NAME} foi cancelada.`;
         color = 'success';
+        localStorage.setItem(`subscribe_${this.event.EVENT_CODE}`, 'false');
         this.utilsService.presentToast(message, color);
       }, err => {
         message = `Não foi possível cancelar sua  a inscrição no evento: ${this.event.EVENT_NAME}`;

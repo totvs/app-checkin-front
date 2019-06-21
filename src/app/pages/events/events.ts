@@ -91,6 +91,14 @@ export class EventsPage implements OnInit {
 
     this.confData.getTimeline(this.queryText).subscribe((data: any) => {
       this.groups = data;
+
+      this.groups.forEach(element => {
+        element.itens.forEach(items => {
+          if (!localStorage.getItem(`subscribe_${items.EVENT_CODE}`)) {
+            localStorage.setItem(`subscribe_${items.EVENT_CODE}`, 'false');
+          }
+        });
+      });
     });
   }
 }
