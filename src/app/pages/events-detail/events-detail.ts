@@ -37,6 +37,11 @@ export class EventsDetailPage implements OnInit {
           this.event = data;
           if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`)) {
             this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? true : false;
+            if (this.isFavorite) {
+              this.subscriptionLabel = 'Desinscreva-se';
+            } else {
+              this.subscriptionLabel = 'Inscreva-se';
+            }
           }
         });
     });
