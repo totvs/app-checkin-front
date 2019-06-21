@@ -36,7 +36,7 @@ export class EventsDetailPage implements OnInit {
         this.dataProvider.loadId(params['id']).subscribe((data: any) => {
           this.event = data;
           if (localStorage.getItem(`subscribe_${data.EVENT_CODE}`)) {
-            this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? true : false;
+            this.isFavorite = localStorage.getItem(`subscribe_${data.EVENT_CODE}`) === 'true' ? false : true;
             this.toggleSubscribe(true);
           }
         });
@@ -138,8 +138,9 @@ export class EventsDetailPage implements OnInit {
         this.eventsSubscription(true);
       }
     }
-
-    this.presentToast();
+    if (!start) {
+      this.presentToast();
+    }
   }
 
   async presentToast() {
