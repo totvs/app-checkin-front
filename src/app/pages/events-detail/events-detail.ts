@@ -132,7 +132,7 @@ export class EventsDetailPage implements OnInit {
 
   toggleSubscribe(event) {
     if (!this.initial) {
-      if (!event.detail.checked || this.isFavorite) {
+      if (!event.detail.checked) {
         this.isFavorite = false;
         this.subscriptionLabel = 'Inscreva-se';
           this.eventsSubscription(false);
