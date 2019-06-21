@@ -135,16 +135,16 @@ export class EventsDetailPage implements OnInit {
       if (!event.detail.checked) {
         this.isFavorite = false;
         this.subscriptionLabel = 'Inscreva-se';
-          this.eventsSubscription(false);
+        this.eventsSubscription(false);
+        this.presentToast();
       } else {
         this.isFavorite = true;
         this.subscriptionLabel = 'Desinscreva-se';
         this.eventsSubscription(true);
+        this.presentToast();
       }
-      this.presentToast();
     }
     this.initial = false;
-   
   }
 
   async presentToast() {
