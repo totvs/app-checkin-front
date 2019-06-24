@@ -81,15 +81,14 @@ export class EventsDetailPage implements OnInit {
   }
 
   eventsSubscription(subscribption) {
-    const dateStart = new Date();
-    dateStart.setMinutes(dateStart.getMinutes() + 2);
+    const dateStart = new Date(this.event.DATETIMESTART);
     const body = {
       email: this.email,
       eventCode: this.event.EVENT_CODE,
       eventDescription: this.event.DESCRIPTION,
       eventDuration: 0,
       eventName: this.event.EVENT_NAME,
-      eventStartTime: this.event.DATETIMESTART,
+      eventStartTime: dateStart.toISOString(),
       eventRoom: this.event.ROOM,
       enablePushNotification: true,
       NotificationService: localStorage.getItem('firebase-key') ? 'Firebase' : 'EngageSpot',
