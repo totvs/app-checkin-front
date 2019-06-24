@@ -24,9 +24,9 @@
           </ion-label>
         </ion-item-divider>
 
-        <ion-item-sliding *ngFor="let event of group.itens" #slidingItem >
-          <ion-item routerLink="/events/{{event.EVENT_CODE}}">
-            <ion-label>
+        <ion-item-sliding *ngFor="let event of group.itens" #slidingItem color="favorite">
+          <ion-item routerLink="/events/{{event.EVENT_CODE}}"  >
+            <ion-label class='break'>
               <h3>{{event.EVENT_NAME}}</h3>
               <ion-badge color="success" style="margin-right: 1%;">Horário: {{event.DATETIMESTART | date: 'H:mm' }}</ion-badge>
               <ion-badge color="primary" style="margin-right: 1%;">Duração: {{event.DURATION | slice:0:5}}</ion-badge>
@@ -44,9 +44,7 @@
 
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
       <ion-fab-button (click)="checkin()"><ion-icon name="qr-scanner"></ion-icon></ion-fab-button>
-    </ion-fab>
-    {{token}}
-  
+    </ion-fab>  
 
 </ion-content>
 
