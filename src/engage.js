@@ -42,7 +42,7 @@ function refreshNotifications(sitekey, UUID) {
 
           if(document.getElementById('ncBody')) {
             let msgs = document.getElementById('ncBody');
-            if(data.notifications.length > msgs.childNodes.length ) {
+            if(data.notifications.length >= msgs.childNodes.length ) {
               const increment = data.notifications.length - msgs.childNodes.length ;
 
               if (msgs.childNodes.length > 0) {
