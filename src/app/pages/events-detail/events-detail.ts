@@ -89,7 +89,7 @@ export class EventsDetailPage implements OnInit {
       eventDescription: this.event.DESCRIPTION,
       eventDuration: 0,
       eventName: this.event.EVENT_NAME,
-      eventStartTime: this.event.EVENT_DATETIMESTART,
+      eventStartTime: this.event.DATETIMESTART,
       eventRoom: this.event.ROOM,
       enablePushNotification: true,
       NotificationService: localStorage.getItem('firebase-key') ? 'Firebase' : 'EngageSpot',
