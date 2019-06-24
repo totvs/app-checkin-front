@@ -9,6 +9,14 @@
       "ROOM": "Labs"
     },
     {
+      "EVENT_CODE": "0021",
+      "EVENT_NAME": "#TESTE",
+      "DESCRIPTION": "A comunicação interna nas corporações é um desafio. Nessa atividade teremos como pano de fundo a experiência da TOTVS, que criou um portal interno para ser um grande hub de informações com seus colaboradores.",
+      "DATETIMESTART": "2019-06-24T16:38:00",
+      "DURATION": "00:45:00",
+      "ROOM": "Labs"
+    },
+    {
       "EVENT_CODE": "0002",
       "EVENT_NAME": "Mindset empreendedor com Michelle Messina diretamente do Vale do Silício",
       "DESCRIPTION": "Focada nos tópicos-chave para empreendedores e as necessidades de seus times em crescer e dimensionar o business, este workshop traz os insights e as melhores práticas das mais bem-sucedidas startups, investidores e empresas do Vale do Silício, além de dicas e sugestões para aplicar em seu negócio.",
