@@ -43,6 +43,7 @@ function refreshNotifications(sitekey, UUID) {
           if(document.getElementById('ncBody')) {
             let msgs = document.getElementById('ncBody');
             if(data.notifications.length > msgs.childNodes.length ) {
+              const increment = data.notifications.length - msgs.childNodes.length ;
 
               if (msgs.childNodes.length > 0) {
                 msgs.childNodes.forEach( function(item){
@@ -51,7 +52,6 @@ function refreshNotifications(sitekey, UUID) {
                   if (childrenMsg !== null) {
                     if (notification.id !== childrenMsg.getAttribute('push-uid')) {
                       document.getElementById('ncBody').appendChild(notificationChildDiv);
-                      const increment = data.notifications.length - msgs.childNodes.length ;
                       document.getElementById('unreadNotificationCount').innerText = increment.toString();
                       document.getElementById('unreadNotificationCount').style.display = 'block';
                     }
@@ -59,7 +59,6 @@ function refreshNotifications(sitekey, UUID) {
                 })
               } else {
                 document.getElementById('ncBody').appendChild(notificationChildDiv);
-                const increment = data.notifications.length - msgs.childNodes.length ;
                 document.getElementById('unreadNotificationCount').innerText = increment.toString();
                 document.getElementById('unreadNotificationCount').style.display = 'block';
               }
