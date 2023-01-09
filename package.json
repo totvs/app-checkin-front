@@ -43,7 +43,7 @@
     "core-js": "^2.5.7",
     "document-register-element": "^1.13.2",
     "firebase": "^6.0.2",
-    "firebase-admin": "^7.3.0",
+    "firebase-admin": "^11.4.1",
     "jsqr": "^1.2.0",
     "oidc-client": "1.5.2",
     "rxjs": "6.5.2",
